@@ -19,6 +19,7 @@
 
  - (void)viewDidLoad {
 	 [super viewDidLoad];
+	 self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	 [self syncUserDefaults];
 	 
 	 //TODO - show busy panel while loading
