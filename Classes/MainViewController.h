@@ -8,10 +8,16 @@
 
 #import "FlipsideViewController.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
+@class Subscription;
+@class Account;
+@class Bucket;
+
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
 	NSString *bucketWiseUrl;
 	NSString *userName;
 	NSString *password;
+	Subscription *userInfo;
+	IBOutlet UITableView *acctTableView;	
 }
 
 - (IBAction)showInfo;
@@ -19,5 +25,8 @@
 - (IBAction)refreshView;
 
 - (void)syncUserDefaults;
+
+//- (Account)accountAtIndexPath:(NSIndexPath *)indexPath;
+
 
 @end
