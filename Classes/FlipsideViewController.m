@@ -35,6 +35,7 @@
 	[[NSUserDefaults standardUserDefaults] setObject:urlTextField.text forKey:@"bucketWiseUrl"];
 	[[NSUserDefaults standardUserDefaults] setObject:userNameTextField.text forKey:@"bucketWiseUserName"];	
 	[[NSUserDefaults standardUserDefaults] setObject:passwordTextField.text forKey:@"bucketWisePassword"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

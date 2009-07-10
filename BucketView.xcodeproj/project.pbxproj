@@ -52,6 +52,7 @@
 		EA6CFCE20FFEA33000718304 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFCE10FFEA33000718304 /* Account.m */; };
 		EA6CFCF50FFEA51200718304 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFCF40FFEA51200718304 /* Subscription.m */; };
 		EAA67AFC0FFEB1FA00CBD5A2 /* Bucket.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA67AFB0FFEB1FA00CBD5A2 /* Bucket.m */; };
+		EACAD8781007548B002F5AA0 /* UIBarButtonRefresh.png in Resources */ = {isa = PBXBuildFile; fileRef = EACAD8771007548B002F5AA0 /* UIBarButtonRefresh.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,7 @@
 		EA6CFCF40FFEA51200718304 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscription.m; sourceTree = "<group>"; };
 		EAA67AFA0FFEB1FA00CBD5A2 /* Bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bucket.h; sourceTree = "<group>"; };
 		EAA67AFB0FFEB1FA00CBD5A2 /* Bucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bucket.m; sourceTree = "<group>"; };
+		EACAD8771007548B002F5AA0 /* UIBarButtonRefresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonRefresh.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EACAD87110075415002F5AA0 /* Images */,
 				EAA67AF10FFEB19500CBD5A2 /* Models */,
 				EA6CFC4C0FFE9BE400718304 /* objective_resource */,
 				289233A00DB2D0730083E9F9 /* Main View */,
@@ -397,6 +400,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		EACAD87110075415002F5AA0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EACAD8771007548B002F5AA0 /* UIBarButtonRefresh.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -449,6 +460,7 @@
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+				EACAD8781007548B002F5AA0 /* UIBarButtonRefresh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

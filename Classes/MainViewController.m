@@ -16,65 +16,46 @@
 @implementation MainViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-
-
  - (void)viewDidLoad {
 	 [super viewDidLoad];
 	 [self syncUserDefaults];
-	 
-	 [ObjectiveResourceConfig setSite:bucketWiseUrl];	 
-	 [ObjectiveResourceConfig setUser:userName];
-	 [ObjectiveResourceConfig setPassword:password];
-	 [ObjectiveResourceConfig setResponseType:XmlResponse];
-	 
-	 Subscription *subby = [[Subscription findAllRemote] objectAtIndex:0];
-	 NSArray *accounts = [Account findAllForSubscriptionWithId:[subby subscriptionId]];
-	 for (int i = 0; i < [accounts count]; i++) {
-		 Account *acct = [accounts objectAtIndex:i];
-		 NSLog([acct name]);
-		 NSLog([acct balance]);
-		 
-		 NSArray *buckets = [Bucket findAllForAccountWithId:[acct accountId]];
-		 for (int i = 0; i < [buckets count]; i++) {
-			 Bucket *bucket = [buckets objectAtIndex:i];
-			 NSLog([bucket name]);
-			 NSLog([bucket balance]);			 
-		 }
-		 
-	 }
-	 
-	 
  }
+
+- (IBAction)refreshView {
+	Subscription *subby = [[Subscription findAllRemote] objectAtIndex:0];
+	subby.accounts = [Account findAllForSubscriptionWithId:[subby subscriptionId]];
+	for (int i = 0; i < [subby.accounts count]; i++) {
+		Account *acct = [subby.accounts objectAtIndex:i];
+		NSLog([acct name]);
+		NSLog([acct balance]);
+		
+		acct.buckets = [Bucket findAllForAccountWithId:[acct accountId]];
+		for (int i = 0; i < [acct.buckets count]; i++) {
+			Bucket *bucket = [acct.buckets objectAtIndex:i];
+			NSLog([bucket name]);
+			NSLog([bucket balance]);			 
+		}		
+	}
+}
 
 - (void)syncUserDefaults {
 	bucketWiseUrl = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"];
 	userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
-	password = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];	
+	password = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];
+	
+	[ObjectiveResourceConfig setSite:bucketWiseUrl];	 
+	[ObjectiveResourceConfig setUser:userName];
+	[ObjectiveResourceConfig setPassword:password];
 }
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
 
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-    
 	[self dismissModalViewControllerAnimated:YES];
+	[self syncUserDefaults];
 }
 
 
-- (IBAction)showInfo {    
-	
+- (IBAction)showInfo {    	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
 	
@@ -83,16 +64,6 @@
 	
 	[controller release];
 }
-
-
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

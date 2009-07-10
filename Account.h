@@ -13,6 +13,7 @@
 	NSString *accountId;
 	NSString *name;
 	NSString *balance;
+	NSArray *buckets;
 }
 
 + (NSArray *)findAllForSubscriptionWithId:(NSString *)subscriptionId;
@@ -20,5 +21,6 @@
 @property (nonatomic, retain) NSString *accountId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *balance;
+@property (nonatomic, retain) NSArray *buckets;
 
 @end

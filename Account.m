@@ -30,7 +30,7 @@
 }
 
 
-@synthesize name, balance, accountId;
+@synthesize name, balance, accountId, buckets;
 
 
 - (void)dealloc {

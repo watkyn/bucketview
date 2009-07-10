@@ -16,6 +16,8 @@
 
 - (IBAction)showInfo;
 
+- (IBAction)refreshView;
+
 - (void)syncUserDefaults;
 
 @end

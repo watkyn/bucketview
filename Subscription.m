@@ -11,6 +11,6 @@
 
 @implementation Subscription
 
-@synthesize subscriptionId, ownerId;
+@synthesize subscriptionId, ownerId, accounts;
 
 @end

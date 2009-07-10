@@ -12,9 +12,11 @@
 @interface Subscription : NSObject {
 	NSString *subscriptionId;
 	NSString *ownerId;
+	NSArray *accounts;
 }
 
 @property (nonatomic, retain) NSString *subscriptionId;
 @property (nonatomic, retain) NSString *ownerId;
+@property (nonatomic, retain) NSArray *accounts;
 
 @end
