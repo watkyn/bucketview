@@ -278,7 +278,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>27</integer>
+									<integer>26</integer>
 									<integer>25</integer>
 									<integer>0</integer>
 								</array>
@@ -333,7 +333,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EAAEED591007813D00819CE6</string>
+										<string>EAE9F4C1100789E900FC73BE</string>
 										<key>history</key>
 										<array>
 											<string>EA4A236910075963004F56F9</string>
@@ -351,7 +351,7 @@
 											<string>EA4A238210075988004F56F9</string>
 											<string>EA4A2389100759ED004F56F9</string>
 											<string>EA4A24411007661F004F56F9</string>
-											<string>EA4A2509100774FD004F56F9</string>
+											<string>EAAEED591007813D00819CE6</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -416,9 +416,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EAAEED4610077CE500819CE6</string>
+				<string>EAE9F4921007831800FC73BE</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>EAAEED4710077CE500819CE6</string>
+				<string>EAE9F4931007831800FC73BE</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -552,12 +552,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EAAEED5A1007813D00819CE6</string>
-		<string>EAAEED5B1007813D00819CE6</string>
-		<string>1C78EAAD065D492600B07095</string>
+		<string>EAE9F4A1100783B500FC73BE</string>
+		<string>EAE9F4A2100783B500FC73BE</string>
 		<string>EABDE8000FFE89F3001FDC55</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/Tony/dev/cocoa/bucketview/BucketView.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>7 55 1676 973 0 0 1680 1028 </string>
@@ -637,7 +637,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>EABDE8000FFE89F3001FDC55</string>
-				<string>EAAEED551007805400819CE6</string>
+				<string>EAE9F4941007831800FC73BE</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -757,13 +757,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>EAAEED4810077CE500819CE6</string>
+				<string>EAE9F4951007831800FC73BE</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>EAAEED4910077CE500819CE6</string>
-				<string>EAAEED4A10077CE500819CE6</string>
-				<string>EAAEED4B10077CE500819CE6</string>
-				<string>EAAEED4C10077CE500819CE6</string>
-				<string>EAAEED4D10077CE500819CE6</string>
+				<string>EAE9F4961007831800FC73BE</string>
+				<string>EAE9F4971007831800FC73BE</string>
+				<string>EAE9F4981007831800FC73BE</string>
+				<string>EAE9F4991007831800FC73BE</string>
+				<string>EAE9F49A1007831800FC73BE</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -772,7 +772,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -927,7 +927,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>EAAEED561007805400819CE6</string>
+				<string>EAE9F49F1007839900FC73BE</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -937,7 +937,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

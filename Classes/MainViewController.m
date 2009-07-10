@@ -20,6 +20,10 @@
  - (void)viewDidLoad {
 	 [super viewDidLoad];
 	 [self syncUserDefaults];
+	 
+	 //TODO - show busy panel while loading
+	 //TODO - use core data to keep stale copy of data and have refresh happen in background?
+	 
 	 userInfo = [[Subscription alloc] init];
 	 [self refreshView];
  }
@@ -37,16 +41,8 @@
 		userInfo = [[[Subscription findAllRemote] objectAtIndex:0] retain];
 		userInfo.accounts = [Account findAllForSubscriptionWithId:[userInfo subscriptionId]];
 		for (int i = 0; i < [userInfo.accounts count]; i++) {
-			Account *acct = [userInfo.accounts objectAtIndex:i];
-			NSLog([acct name]);
-			NSLog([acct balance]);
-			
+			Account *acct = [userInfo.accounts objectAtIndex:i];			
 			acct.buckets = [Bucket findAllForAccountWithId:[acct accountId]];
-			for (int i = 0; i < [acct.buckets count]; i++) {
-				Bucket *bucket = [acct.buckets objectAtIndex:i];
-				NSLog([bucket name]);
-				NSLog([bucket balance]);			 
-			}		
 		}
 		
 		[acctTableView reloadData];
@@ -103,7 +99,7 @@
 	[currencyStyle release];
 	
 	NSString *cellText = [NSString stringWithFormat:@"%@   %@", bucketName, formattedBalance];
-	cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+	cell.textLabel.font = [UIFont systemFontOfSize:15.0];
 	cell.textLabel.text = cellText;
  
 	return cell;
