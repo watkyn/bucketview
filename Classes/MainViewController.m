@@ -32,23 +32,25 @@
 #pragma mark web services and data manip
 
 - (IBAction)refreshView {
-	[userInfo release];
-	userInfo = [[[Subscription findAllRemote] objectAtIndex:0] retain];
-	userInfo.accounts = [Account findAllForSubscriptionWithId:[userInfo subscriptionId]];
-	for (int i = 0; i < [userInfo.accounts count]; i++) {
-		Account *acct = [userInfo.accounts objectAtIndex:i];
-		NSLog([acct name]);
-		NSLog([acct balance]);
+	if (bucketWiseUrl != nil) {
+		[userInfo release];
+		userInfo = [[[Subscription findAllRemote] objectAtIndex:0] retain];
+		userInfo.accounts = [Account findAllForSubscriptionWithId:[userInfo subscriptionId]];
+		for (int i = 0; i < [userInfo.accounts count]; i++) {
+			Account *acct = [userInfo.accounts objectAtIndex:i];
+			NSLog([acct name]);
+			NSLog([acct balance]);
+			
+			acct.buckets = [Bucket findAllForAccountWithId:[acct accountId]];
+			for (int i = 0; i < [acct.buckets count]; i++) {
+				Bucket *bucket = [acct.buckets objectAtIndex:i];
+				NSLog([bucket name]);
+				NSLog([bucket balance]);			 
+			}		
+		}
 		
-		acct.buckets = [Bucket findAllForAccountWithId:[acct accountId]];
-		for (int i = 0; i < [acct.buckets count]; i++) {
-			Bucket *bucket = [acct.buckets objectAtIndex:i];
-			NSLog([bucket name]);
-			NSLog([bucket balance]);			 
-		}		
+		[acctTableView reloadData];
 	}
-	
-	[acctTableView reloadData];
 }
 
 - (void)syncUserDefaults {
