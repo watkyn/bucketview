@@ -17,7 +17,8 @@
 	NSString *userName;
 	NSString *password;
 	Subscription *userInfo;
-	IBOutlet UITableView *acctTableView;	
+	IBOutlet UITableView *acctTableView;
+	IBOutlet UILabel *lastUpdatedLabel;
 }
 
 - (IBAction)showInfo;
@@ -25,8 +26,6 @@
 - (IBAction)refreshView;
 
 - (void)syncUserDefaults;
-
-//- (Account)accountAtIndexPath:(NSIndexPath *)indexPath;
 
 
 @end

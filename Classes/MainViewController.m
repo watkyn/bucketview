@@ -23,7 +23,6 @@
 	 [self syncUserDefaults];
 	 
 	 //TODO - show busy panel while loading
-	 //TODO - use core data to keep stale copy of data and have refresh happen in background?
 	 
 	 userInfo = [[Subscription alloc] init];
 	 [self refreshView];
@@ -47,7 +46,14 @@
 		}
 		
 		[acctTableView reloadData];
-	}
+				
+		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+		[dateFormatter setDateStyle:NSDateFormatterFullStyle];
+		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
+		NSDate *date = [NSDate date];
+		NSString *formattedDateString = [dateFormatter stringFromDate:date];		
+		lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+	}	
 }
 
 - (void)syncUserDefaults {
