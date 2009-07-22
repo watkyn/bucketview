@@ -88,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bucketCell"];
 	if(nil == cell) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"bucketCell"] autorelease];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"bucketCell"] autorelease];
 	}
 
 	Account *acct = [userInfo.accounts objectAtIndex:indexPath.section];
@@ -105,9 +105,11 @@
 	NSString* formattedBalance = [currencyStyle stringFromNumber:amount];
 	[currencyStyle release];
 	
-	NSString *cellText = [NSString stringWithFormat:@"%@   %@", bucketName, formattedBalance];
+	//NSString *cellText = [NSString stringWithFormat:@"%@   %@", bucketName, formattedBalance];
 	cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-	cell.textLabel.text = cellText;
+	cell.textLabel.text = bucketName;
+	cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+	cell.detailTextLabel.text = formattedBalance;
  
 	return cell;
 }

@@ -23,9 +23,6 @@
 							   [self getRemoteCollectionName],
 							   [self getRemoteProtocolExtension]];
 	
-	NSLog(bucketPath);
-	//accounts/3/buckets.xml
-	
     Response *res = [Connection get:bucketPath withUser:[ObjectiveResourceConfig getUser]
 						andPassword:[ObjectiveResourceConfig getPassword]];
     return [self allFromXMLData:res.body];
