@@ -28,27 +28,19 @@
 	 [self refreshView];
  }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
 
-#pragma mark web services and data manip
+#pragma mark web services and data manipuplation
 
 - (IBAction)refreshView {
 	if (bucketWiseUrl != nil) {
 		[userInfo release];
 		userInfo = [[[Subscription findAllRemote] objectAtIndex:0] retain];
 		userInfo.accounts = [Account findAllForSubscriptionWithId:[userInfo subscriptionId]];
-		for (int i = 0; i < [userInfo.accounts count]; i++) {
-			Account *acct = [userInfo.accounts objectAtIndex:i];			
-			acct.buckets = [Bucket findAllForAccountWithId:[acct accountId]];
-		}
 		
 		[acctTableView reloadData];
 				
 		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
-		[dateFormatter setDateStyle:NSDateFormatterFullStyle];
+		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
 		NSDate *date = [NSDate date];
 		NSString *formattedDateString = [dateFormatter stringFromDate:date];		
@@ -105,7 +97,6 @@
 	NSString* formattedBalance = [currencyStyle stringFromNumber:amount];
 	[currencyStyle release];
 	
-	//NSString *cellText = [NSString stringWithFormat:@"%@   %@", bucketName, formattedBalance];
 	cell.textLabel.font = [UIFont systemFontOfSize:15.0];
 	cell.textLabel.text = bucketName;
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];

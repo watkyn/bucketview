@@ -11,6 +11,7 @@
 #import "Response.h"
 #import "Connection.h"
 #import "ObjectiveResourceConfig.h"
+#import "NSObject+XMLSerializableSupport.h"
 
 @implementation Bucket
 
