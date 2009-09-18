@@ -25,15 +25,21 @@
 	 
 	 //TODO - show busy panel while loading
 	 
+	 newUser = ![bucketWiseUrl hasData];
+	 
 	 userInfo = [[Subscription alloc] init];
-	 [self refreshView];
+	 
+	 if (!newUser) {
+		 [self refreshView];
+	 }
  }
 
 //the view has to be loaded before programmatically flipping to the info screen
 - (void)viewDidAppear:(BOOL)animated {
 	//new users should be starting here
-	if (![bucketWiseUrl hasData]) {
-		[self showInfo];	
+	if (newUser) {
+		[self showInfo];
+		newUser = NO;
 	}
 }
 
@@ -71,6 +77,7 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
 	[self dismissModalViewControllerAnimated:YES];
 	[self syncUserDefaults];
+	[self refreshView];
 }
 
 

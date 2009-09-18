@@ -19,6 +19,7 @@
 	Subscription *userInfo;
 	IBOutlet UITableView *acctTableView;
 	IBOutlet UILabel *lastUpdatedLabel;
+	BOOL newUser;
 }
 
 - (IBAction)showInfo;

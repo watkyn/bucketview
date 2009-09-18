@@ -7,7 +7,7 @@
 //
 
 #import "FlipsideViewController.h"
-
+#import "NSString+Util.h"
 
 @implementation FlipsideViewController
 
@@ -18,24 +18,20 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 	
-	NSString *bucketWiseUrl = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"];
-	NSString *userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
-	NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];
-	
-	urlTextField.text = bucketWiseUrl;
-	userNameTextField.text = userName;
-	passwordTextField.text = password;
+	urlTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"];
+	userNameTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
+	passwordTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];
 	
 }
 
 
 - (IBAction)done {
-	[self.delegate flipsideViewControllerDidFinish:self];	
-	
-	[[NSUserDefaults standardUserDefaults] setObject:urlTextField.text forKey:@"bucketWiseUrl"];
-	[[NSUserDefaults standardUserDefaults] setObject:userNameTextField.text forKey:@"bucketWiseUserName"];	
-	[[NSUserDefaults standardUserDefaults] setObject:passwordTextField.text forKey:@"bucketWisePassword"];
+	[[NSUserDefaults standardUserDefaults] setObject:[urlTextField.text trim] forKey:@"bucketWiseUrl"];
+	[[NSUserDefaults standardUserDefaults] setObject:[userNameTextField.text trim] forKey:@"bucketWiseUserName"];	
+	[[NSUserDefaults standardUserDefaults] setObject:[passwordTextField.text trim] forKey:@"bucketWisePassword"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
 
