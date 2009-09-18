@@ -12,10 +12,11 @@
 #import "Account.h"
 #import "Subscription.h"
 #import "Bucket.h"
+#import "NSString+Util.h"
 
 @implementation MainViewController
 
-#pragma mark loading and unloading
+#pragma mark UIView overridden methods
 
  - (void)viewDidLoad {
 	 [super viewDidLoad];
@@ -27,6 +28,14 @@
 	 userInfo = [[Subscription alloc] init];
 	 [self refreshView];
  }
+
+//the view has to be loaded before programmatically flipping to the info screen
+- (void)viewDidAppear:(BOOL)animated {
+	//new users should be starting here
+	if (![bucketWiseUrl hasData]) {
+		[self showInfo];	
+	}
+}
 
 
 #pragma mark web services and data manipuplation

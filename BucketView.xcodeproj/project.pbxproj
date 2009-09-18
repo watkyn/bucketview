@@ -19,6 +19,7 @@
 		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		EA5B041910643327009C8197 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B041810643327009C8197 /* NSString+Util.m */; };
 		EA6CFC990FFE9BE500718304 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC4E0FFE9BE400718304 /* Connection.m */; };
 		EA6CFC9A0FFE9BE500718304 /* ConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC500FFE9BE500718304 /* ConnectionDelegate.m */; };
 		EA6CFC9B0FFE9BE500718304 /* NSHTTPURLResponse+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC520FFE9BE500718304 /* NSHTTPURLResponse+Error.m */; };
@@ -75,6 +76,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BucketView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketView_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BucketView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BucketView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		EA5B041710643327009C8197 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		EA5B041810643327009C8197 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		EA6CFC4D0FFE9BE400718304 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		EA6CFC4E0FFE9BE400718304 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		EA6CFC4F0FFE9BE400718304 /* ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionDelegate.h; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EA5B04151064330E009C8197 /* Util */,
 				EAA67AF10FFEB19500CBD5A2 /* Models */,
 				EA6CFC4C0FFE9BE400718304 /* objective_resource */,
 				289233A00DB2D0730083E9F9 /* Main View */,
@@ -250,6 +254,15 @@
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA5B04151064330E009C8197 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EA5B041710643327009C8197 /* NSString+Util.h */,
+				EA5B041810643327009C8197 /* NSString+Util.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		EA6CFC4C0FFE9BE400718304 /* objective_resource */ = {
@@ -498,6 +511,7 @@
 				EA6CFCE20FFEA33000718304 /* Account.m in Sources */,
 				EA6CFCF50FFEA51200718304 /* Subscription.m in Sources */,
 				EAA67AFC0FFEB1FA00CBD5A2 /* Bucket.m in Sources */,
+				EA5B041910643327009C8197 /* NSString+Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
