@@ -33,6 +33,10 @@
 
 @synthesize name, balance;
 
-
+- (void)dealloc {
+	[name release];
+	[balance release];
+	[super dealloc];
+}
 
 @end

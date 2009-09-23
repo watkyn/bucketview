@@ -13,4 +13,11 @@
 
 @synthesize subscriptionId, ownerId, accounts;
 
+- (void)dealloc {
+	[accounts release];
+	[ownerId release];
+	[subscriptionId release];
+    [super dealloc];
+}
+
 @end

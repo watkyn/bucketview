@@ -18,19 +18,21 @@
 
 #pragma mark UIView overridden methods
 
- - (void)viewDidLoad {
+- (void)viewDidLoad {
 	 [super viewDidLoad];
 	 self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	 [self syncUserDefaults];
 	 
 	 newUser = ![bucketWiseUrl hasData];
-	 
-	 userInfo = [[Subscription alloc] init];
-	 
 	 if (!newUser) {
 		 [self refreshView];
 	 }
- }
+}
+
+- (void)viewDidUnLoad {
+	[super viewDidUnload];
+	[userInfo release];
+}
 
 //the view has to be loaded before programmatically flipping to the info screen
 - (void)viewDidAppear:(BOOL)animated {

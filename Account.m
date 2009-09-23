@@ -28,6 +28,10 @@
 
 
 - (void)dealloc {
+	[buckets release];
+	[name release];
+	[balance release];
+	[accountId release];
     [super dealloc];
 }
 
