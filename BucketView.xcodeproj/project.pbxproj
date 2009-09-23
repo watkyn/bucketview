@@ -52,6 +52,7 @@
 		EA6CFCB60FFE9BE500718304 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC980FFE9BE500718304 /* Response.m */; };
 		EA6CFCE20FFEA33000718304 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFCE10FFEA33000718304 /* Account.m */; };
 		EA6CFCF50FFEA51200718304 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFCF40FFEA51200718304 /* Subscription.m */; };
+		EA93FBD8106AB3470074E008 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EA93FBD7106AB3470074E008 /* Icon.png */; };
 		EAA67AFC0FFEB1FA00CBD5A2 /* Bucket.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA67AFB0FFEB1FA00CBD5A2 /* Bucket.m */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +152,7 @@
 		EA6CFCE10FFEA33000718304 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		EA6CFCF30FFEA51200718304 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
 		EA6CFCF40FFEA51200718304 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscription.m; sourceTree = "<group>"; };
+		EA93FBD7106AB3470074E008 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		EAA67AFA0FFEB1FA00CBD5A2 /* Bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bucket.h; sourceTree = "<group>"; };
 		EAA67AFB0FFEB1FA00CBD5A2 /* Bucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bucket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,6 +240,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA93FBD7106AB3470074E008 /* Icon.png */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
@@ -462,6 +465,7 @@
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+				EA93FBD8106AB3470074E008 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
