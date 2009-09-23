@@ -19,23 +19,28 @@
 #pragma mark UIView overridden methods
 
 - (void)viewDidLoad {
-	 [super viewDidLoad];
-	 self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-	 [self syncUserDefaults];
-	 
-	 newUser = ![bucketWiseUrl hasData];
-	 if (!newUser) {
-		 [self refreshView];
-	 }
+	[super viewDidLoad];
+	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	[self syncUserDefaults];
+	
+	newUser = ![bucketWiseUrl hasData];
+	
+	userInfo = [[Subscription alloc] init];
+	
+	if (!newUser) {
+		[self refreshView];
+	}
 }
 
 - (void)viewDidUnLoad {
-	[super viewDidUnload];
 	[userInfo release];
+	[super viewDidUnload];
 }
+
 
 //the view has to be loaded before programmatically flipping to the info screen
 - (void)viewDidAppear:(BOOL)animated {
+	//new users should be starting here
 	if (newUser) {
 		[self showInfo];
 		newUser = NO;
@@ -52,7 +57,7 @@
 		userInfo.accounts = [Account findAllForSubscriptionWithId:[userInfo subscriptionId]];
 		
 		[acctTableView reloadData];
-				
+		
 		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
 		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
