@@ -23,8 +23,6 @@
 	 self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	 [self syncUserDefaults];
 	 
-	 //TODO - show busy panel while loading
-	 
 	 newUser = ![bucketWiseUrl hasData];
 	 
 	 userInfo = [[Subscription alloc] init];
@@ -36,7 +34,6 @@
 
 //the view has to be loaded before programmatically flipping to the info screen
 - (void)viewDidAppear:(BOOL)animated {
-	//new users should be starting here
 	if (newUser) {
 		[self showInfo];
 		newUser = NO;
@@ -64,9 +61,10 @@
 }
 
 - (void)syncUserDefaults {
-	bucketWiseUrl = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"];
-	userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
-	password = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];
+	bucketWiseUrl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"] trim];
+	bucketWiseUrl = [self cleanUpUrl:bucketWiseUrl];
+	userName = [[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"] trim];
+	password = [[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"] trim];
 	
 	[ObjectiveResourceConfig setSite:bucketWiseUrl];	 
 	[ObjectiveResourceConfig setUser:userName];
@@ -133,13 +131,19 @@
 	return [[[userInfo.accounts objectAtIndex:section] buckets] count];
 }
 
+- (NSString *)cleanUpUrl:(NSString*)url {
+	NSInteger length = [url length];
+	if (![[url substringWithRange:NSMakeRange(length - 1, 1)] isEqualToString:@"/"]) {
+		url = [NSString stringWithFormat:@"%@%@", url, @"/"];
+	}
+	return url;
+}
+
 #pragma mark object life cycle stuff
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
 }
 
 

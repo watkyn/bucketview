@@ -28,5 +28,6 @@
 
 - (void)syncUserDefaults;
 
+- (NSString *)cleanUpUrl:(NSString*)url;
 
 @end
