@@ -20,6 +20,7 @@
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		EA24174D106D214B00DBAFF1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */; };
+		EA3FAE4F106D3FDC00EAD182 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA3FAE4E106D3FDC00EAD182 /* Entitlements.plist */; };
 		EA6CFC990FFE9BE500718304 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC4E0FFE9BE400718304 /* Connection.m */; };
 		EA6CFC9A0FFE9BE500718304 /* ConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC500FFE9BE500718304 /* ConnectionDelegate.m */; };
 		EA6CFC9B0FFE9BE500718304 /* NSHTTPURLResponse+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC520FFE9BE500718304 /* NSHTTPURLResponse+Error.m */; };
@@ -82,6 +83,7 @@
 		8D1107310486CEB800E47090 /* BucketView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BucketView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		EA24174B106D214B00DBAFF1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Classes/SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Classes/SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		EA3FAE4E106D3FDC00EAD182 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		EA6CFC4D0FFE9BE400718304 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		EA6CFC4E0FFE9BE400718304 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		EA6CFC4F0FFE9BE400718304 /* ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionDelegate.h; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				EA3FAE4E106D3FDC00EAD182 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				EA93FBD8106AB3470074E008 /* Icon.png in Resources */,
+				EA3FAE4F106D3FDC00EAD182 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +594,33 @@
 			};
 			name = Release;
 		};
+		EA3FAE32106D3D7800EAD182 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tony Eichelberger";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B7B81AD-8CFC-4204-909E-52C463433E51";
+				SDKROOT = iphoneos3.0;
+			};
+			name = Distribution;
+		};
+		EA3FAE33106D3D7800EAD182 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BucketView_Prefix.pch;
+				INFOPLIST_FILE = "BucketView-Info.plist";
+				PRODUCT_NAME = BucketView;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -598,6 +629,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				EA3FAE33106D3D7800EAD182 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -607,6 +639,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				EA3FAE32106D3D7800EAD182 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
