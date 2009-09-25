@@ -24,7 +24,6 @@
 	
 }
 
-
 - (IBAction)done {
 	[[NSUserDefaults standardUserDefaults] setObject:[urlTextField.text trim] forKey:@"bucketWiseUrl"];
 	[[NSUserDefaults standardUserDefaults] setObject:[userNameTextField.text trim] forKey:@"bucketWiseUserName"];	

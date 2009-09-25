@@ -49,6 +49,7 @@
 		EA6CFCB40FFE9BE500718304 /* NSString+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC910FFE9BE500718304 /* NSString+XMLSerializableSupport.m */; };
 		EA6CFCB50FFE9BE500718304 /* ObjectiveResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC960FFE9BE500718304 /* ObjectiveResourceConfig.m */; };
 		EA6CFCB60FFE9BE500718304 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC980FFE9BE500718304 /* Response.m */; };
+		EA860A31106CF286003F47AE /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA860A30106CF286003F47AE /* UserInfo.m */; };
 		EA93FBD8106AB3470074E008 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EA93FBD7106AB3470074E008 /* Icon.png */; };
 		EAA9D8AF106ACB600062605D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8AC106ACB600062605D /* Account.m */; };
 		EAA9D8B0106ACB600062605D /* Bucket.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8AE106ACB600062605D /* Bucket.m */; };
@@ -146,6 +147,8 @@
 		EA6CFC960FFE9BE500718304 /* ObjectiveResourceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveResourceConfig.m; sourceTree = "<group>"; };
 		EA6CFC970FFE9BE500718304 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
 		EA6CFC980FFE9BE500718304 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
+		EA860A2F106CF286003F47AE /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfo.h; path = Classes/UserInfo.h; sourceTree = "<group>"; };
+		EA860A30106CF286003F47AE /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfo.m; path = Classes/UserInfo.m; sourceTree = "<group>"; };
 		EA93FBD7106AB3470074E008 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		EAA9D8AB106ACB600062605D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = Classes/Account.h; sourceTree = "<group>"; };
 		EAA9D8AC106ACB600062605D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = Classes/Account.m; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 				EAA9D8AC106ACB600062605D /* Account.m */,
 				EAA9D8AD106ACB600062605D /* Bucket.h */,
 				EAA9D8AE106ACB600062605D /* Bucket.m */,
+				EA860A2F106CF286003F47AE /* UserInfo.h */,
+				EA860A30106CF286003F47AE /* UserInfo.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				EAA9D8B0106ACB600062605D /* Bucket.m in Sources */,
 				EAA9D8B3106ACB6E0062605D /* Subscription.m in Sources */,
 				EAA9D8B6106ACB7C0062605D /* NSString+Util.m in Sources */,
+				EA860A31106CF286003F47AE /* UserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

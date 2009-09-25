@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "MainView.h"
 #import "ObjectiveResourceConfig.h"
+#import "UserInfo.h"
 #import "Account.h"
 #import "Subscription.h"
 #import "Bucket.h"
@@ -20,30 +21,26 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	userInfo = [[UserInfo alloc] init];
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	[self syncUserDefaults];
-	
-	newUser = ![bucketWiseUrl hasData];
-	
-	userInfo = [[Subscription alloc] init];
-	
-	if (!newUser) {
-		[self refreshView];
-	}
+	[self refreshView];
+	newUser = [userInfo isNewUser];
 }
 
 - (void)viewDidUnLoad {
 	[userInfo release];
+	[subscription release];
 	[super viewDidUnload];
 }
 
 
 //the view has to be loaded before programmatically flipping to the info screen
 - (void)viewDidAppear:(BOOL)animated {
-	//new users should be starting here
 	if (newUser) {
 		[self showInfo];
-		newUser = NO;
+		newUser = NO;  //only do this once.
 	}
 }
 
@@ -51,10 +48,10 @@
 #pragma mark web services and data manipuplation
 
 - (IBAction)refreshView {
-	if (bucketWiseUrl != nil) {
-		[userInfo release];
-		userInfo = [[[Subscription findAllRemote] objectAtIndex:0] retain];
-		userInfo.accounts = [Account findAllForSubscriptionWithId:[userInfo subscriptionId]];
+	if (![userInfo isNewUser]) {
+		[subscription release];
+		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];
+		subscription.accounts = [Account findAllForSubscriptionWithId:[subscription subscriptionId]];
 		
 		[acctTableView reloadData];
 		
@@ -68,14 +65,13 @@
 }
 
 - (void)syncUserDefaults {
-	bucketWiseUrl = [[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"] trim];
-	bucketWiseUrl = [self cleanUpUrl:bucketWiseUrl];
-	userName = [[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"] trim];
-	password = [[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"] trim];
+	userInfo.bucketWiseUrl = [self cleanUpUrl:[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"]];
+	userInfo.bucketWiseUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
+	userInfo.bucketWisePassword = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];
 	
-	[ObjectiveResourceConfig setSite:bucketWiseUrl];	 
-	[ObjectiveResourceConfig setUser:userName];
-	[ObjectiveResourceConfig setPassword:password];
+	[ObjectiveResourceConfig setSite:userInfo.bucketWiseUrl];	 
+	[ObjectiveResourceConfig setUser:userInfo.bucketWiseUserName];
+	[ObjectiveResourceConfig setPassword:userInfo.bucketWisePassword];
 }
 
 
@@ -104,7 +100,7 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"bucketCell"] autorelease];
 	}
 
-	Account *acct = [userInfo.accounts objectAtIndex:indexPath.section];
+	Account *acct = [subscription.accounts objectAtIndex:indexPath.section];
 	NSString *bucketName = [[acct.buckets objectAtIndex:indexPath.row] name];
 	NSString *bucketBalance = [[acct.buckets objectAtIndex:indexPath.row] balance];	
 	
@@ -127,20 +123,20 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [[userInfo.accounts objectAtIndex:section] name];
+	return [[subscription.accounts objectAtIndex:section] name];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return userInfo.accounts.count;
+	return subscription.accounts.count;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-	return [[[userInfo.accounts objectAtIndex:section] buckets] count];
+	return [[[subscription.accounts objectAtIndex:section] buckets] count];
 }
 
 - (NSString *)cleanUpUrl:(NSString*)url {
 	NSInteger length = [url length];
-	if (![[url substringWithRange:NSMakeRange(length - 1, 1)] isEqualToString:@"/"]) {
+	if (![[[url trim] substringWithRange:NSMakeRange(length - 1, 1)] isEqualToString:@"/"]) {
 		url = [NSString stringWithFormat:@"%@%@", url, @"/"];
 	}
 	return url;

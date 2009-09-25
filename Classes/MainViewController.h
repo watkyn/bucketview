@@ -9,14 +9,11 @@
 #import "FlipsideViewController.h"
 
 @class Subscription;
-@class Account;
-@class Bucket;
+@class UserInfo;
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
-	NSString *bucketWiseUrl;
-	NSString *userName;
-	NSString *password;
-	Subscription *userInfo;
+	Subscription *subscription;
+	UserInfo *userInfo;
 	IBOutlet UITableView *acctTableView;
 	IBOutlet UILabel *lastUpdatedLabel;
 	BOOL newUser;
