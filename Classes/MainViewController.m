@@ -14,6 +14,7 @@
 #import "Subscription.h"
 #import "Bucket.h"
 #import "NSString+Util.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation MainViewController
 
@@ -25,7 +26,6 @@
 	userInfo = [[UserInfo alloc] init];
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	[self syncUserDefaults];
-	[self refreshView];
 	newUser = [userInfo isNewUser];
 }
 
@@ -40,7 +40,9 @@
 - (void)viewDidAppear:(BOOL)animated {
 	if (newUser) {
 		[self showInfo];
-		newUser = NO;  //only do this once.
+		newUser = NO;  //only do this once when they first start up
+	} else {
+		[self refreshView];
 	}
 }
 
@@ -53,7 +55,7 @@
 		
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];
 		if (subscription == nil) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not get information form BucketWise." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not get data from BucketWise." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
 			[alert release];
 		} else {		
@@ -73,7 +75,7 @@
 - (void)syncUserDefaults {
 	userInfo.bucketWiseUrl = [self cleanUpUrl:[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"]];
 	userInfo.bucketWiseUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
-	userInfo.bucketWisePassword = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWisePassword"];
+	userInfo.bucketWisePassword = [SFHFKeychainUtils getPasswordForUsername:userInfo.bucketWiseUserName andServiceName:@"BucketView" error:nil];
 	
 	[ObjectiveResourceConfig setSite:userInfo.bucketWiseUrl];	 
 	[ObjectiveResourceConfig setUser:userInfo.bucketWiseUserName];

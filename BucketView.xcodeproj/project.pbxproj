@@ -19,6 +19,7 @@
 		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		EA24174D106D214B00DBAFF1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */; };
 		EA6CFC990FFE9BE500718304 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC4E0FFE9BE400718304 /* Connection.m */; };
 		EA6CFC9A0FFE9BE500718304 /* ConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC500FFE9BE500718304 /* ConnectionDelegate.m */; };
 		EA6CFC9B0FFE9BE500718304 /* NSHTTPURLResponse+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC520FFE9BE500718304 /* NSHTTPURLResponse+Error.m */; };
@@ -55,6 +56,7 @@
 		EAA9D8B0106ACB600062605D /* Bucket.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8AE106ACB600062605D /* Bucket.m */; };
 		EAA9D8B3106ACB6E0062605D /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8B2106ACB6E0062605D /* Subscription.m */; };
 		EAA9D8B6106ACB7C0062605D /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8B5106ACB7C0062605D /* NSString+Util.m */; };
+		EAB68CC9106D1EAF0094DCCC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB68CC8106D1EAF0094DCCC /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BucketView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketView_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BucketView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BucketView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		EA24174B106D214B00DBAFF1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Classes/SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Classes/SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		EA6CFC4D0FFE9BE400718304 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		EA6CFC4E0FFE9BE400718304 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		EA6CFC4F0FFE9BE400718304 /* ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionDelegate.h; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 		EAA9D8B2106ACB6E0062605D /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subscription.m; path = Classes/Subscription.m; sourceTree = "<group>"; };
 		EAA9D8B4106ACB7C0062605D /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "Classes/NSString+Util.h"; sourceTree = "<group>"; };
 		EAA9D8B5106ACB7C0062605D /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "Classes/NSString+Util.m"; sourceTree = "<group>"; };
+		EAB68CC8106D1EAF0094DCCC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +173,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+				EAB68CC9106D1EAF0094DCCC /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +261,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAB68CC8106D1EAF0094DCCC /* Security.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
@@ -265,6 +272,8 @@
 		EA5B04151064330E009C8197 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				EA24174B106D214B00DBAFF1 /* SFHFKeychainUtils.h */,
+				EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */,
 				EAA9D8B4106ACB7C0062605D /* NSString+Util.h */,
 				EAA9D8B5106ACB7C0062605D /* NSString+Util.m */,
 			);
@@ -522,6 +531,7 @@
 				EAA9D8B3106ACB6E0062605D /* Subscription.m in Sources */,
 				EAA9D8B6106ACB7C0062605D /* NSString+Util.m in Sources */,
 				EA860A31106CF286003F47AE /* UserInfo.m in Sources */,
+				EA24174D106D214B00DBAFF1 /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
