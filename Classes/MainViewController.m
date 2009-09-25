@@ -50,17 +50,23 @@
 - (IBAction)refreshView {
 	if (![userInfo isNewUser]) {
 		[subscription release];
+		
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];
-		subscription.accounts = [Account findAllForSubscriptionWithId:[subscription subscriptionId]];
-		
-		[acctTableView reloadData];
-		
-		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
-		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
-		NSDate *date = [NSDate date];
-		NSString *formattedDateString = [dateFormatter stringFromDate:date];		
-		lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+		if (subscription == nil) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not get information form BucketWise." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+		} else {		
+			subscription.accounts = [Account findAllForSubscriptionWithId:[subscription subscriptionId]];			
+			[acctTableView reloadData];
+			
+			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+			[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
+			NSDate *date = [NSDate date];
+			NSString *formattedDateString = [dateFormatter stringFromDate:date];		
+			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+		}
 	}	
 }
 
