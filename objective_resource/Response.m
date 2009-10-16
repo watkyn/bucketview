@@ -65,6 +65,7 @@
 - (void) dealloc
 {
 	[body release];
+	[error release];
 	[headers release];
 	[super dealloc];
 }
