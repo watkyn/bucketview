@@ -15,10 +15,10 @@
 
 @implementation Account
 
-+ (NSArray *)findAllForSubscriptionWithId:(NSString *)subscriptionId {	
++ (NSData *)findXmlForSubscriptionWithId:(NSString *)subscriptionId {	
     NSString *accountPath = [NSString stringWithFormat:@"%@subscriptions/%@/accounts.xml?include=buckets", [self getRemoteSite], subscriptionId];
     Response *res = [Connection get:accountPath withUser:[ObjectiveResourceConfig getUser] andPassword:[ObjectiveResourceConfig getPassword]];
-    return [self allFromXMLData:res.body];
+    return res.body;
 }
 
 

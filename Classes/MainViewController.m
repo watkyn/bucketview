@@ -18,6 +18,10 @@
 #import "FileUtil.h"
 #import "NSObject+XMLSerializableSupport.h"
 
+static NSString *BUCKETVIEW_SAVED_SUBSCRIPTION = @"bucketview_last_subscription_search.xml";
+static NSString *BUCKETVIEW_SAVED_ACCOUNTS = @"bucketview_last_account_search.xml";
+static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
+
 @implementation MainViewController
 
 #pragma mark UIView overridden methods
@@ -25,7 +29,6 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	fileUtil = [[FileUtil alloc] init];
 	userInfo = [[UserInfo alloc] init];
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	[self syncUserDefaults];
@@ -33,7 +36,6 @@
 }
 
 - (void)viewDidUnLoad {
-	[fileUtil release];
 	[userInfo release];
 	[subscription release];
 	[super viewDidUnload];
@@ -56,16 +58,23 @@
 - (IBAction)refreshView {
 	if (![userInfo isNewUser]) {
 		[subscription release];
-			
-		NSLog([FileUtil fileToString:@"bucketview_last_search.xml"]);
 		
-		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];
+//		NSData *data = [FileUtil fileToData:bucketv];
+//		if (data != nil) {
+//			subscription = [[Subscription alloc] init];
+//			subscription.accounts = [Account allFromXMLData:data];
+//		}
+		
+		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
 		if (subscription == nil) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not get data from BucketWise." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
 			[alert release];
 		} else {		
-			subscription.accounts = [Account findAllForSubscriptionWithId:[subscription subscriptionId]];			
+			NSData *accountsXmlData = [Account findXmlForSubscriptionWithId:[subscription subscriptionId]];
+			[FileUtil stringToFile:[subscription subscriptionId] withFileName:BUCKETVIEW_SAVED_SUBSCRIPTION];
+			[FileUtil dataToFile:accountsXmlData withFileName:BUCKETVIEW_SAVED_ACCOUNTS];
+			subscription.accounts = [Account allFromXMLData:accountsXmlData];			
 			[acctTableView reloadData];
 			
 			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
@@ -73,12 +82,8 @@
 			[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
 			NSDate *date = [NSDate date];
 			NSString *formattedDateString = [dateFormatter stringFromDate:date];		
+			[FileUtil stringToFile:formattedDateString withFileName:BUCKETVIEW_LAST_UPDATE];
 			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
-			
-			//save off the xml data for this subscription to a file			
-			if ([fileUtil isReady]) {
-				[fileUtil stringToFile:[subscription.accounts toXMLValue] withFileName:@"bucketview_last_search.xml"];			
-			}
 		}
 	}	
 }

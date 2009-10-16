@@ -18,10 +18,12 @@
 
 + (NSString *)documentsPath;
 
++ (NSData *)fileToData:(NSString *)fileName;
+
++ (void)dataToFile:(NSData *)data withFileName:(NSString *)fileName;
+
 + (NSString *)fileToString:(NSString *)fileName;
 
-- (void)stringToFile:(NSString *)stringData withFileName:(NSString *)fileName;
-
-- (BOOL)isReady;
++ (void)stringToFile:(NSString *)data withFileName:(NSString *)fileName;
 
 @end

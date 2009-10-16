@@ -13,7 +13,6 @@
 @class UserInfo;
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
-	FileUtil *fileUtil;
 	Subscription *subscription;
 	UserInfo *userInfo;
 	IBOutlet UITableView *acctTableView;

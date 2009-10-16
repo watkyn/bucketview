@@ -16,7 +16,7 @@
 	NSArray *buckets;
 }
 
-+ (NSArray *)findAllForSubscriptionWithId:(NSString *)subscriptionId;
++ (NSData *)findXmlForSubscriptionWithId:(NSString *)subscriptionId;
 
 @property (nonatomic, retain) NSString *accountId;
 @property (nonatomic, retain) NSString *name;
