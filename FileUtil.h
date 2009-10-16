@@ -13,10 +13,13 @@
 	NSOutputStream *asyncOutputStream;
 	NSData * outputData;
 	NSRange outputRange;
+	BOOL ready;
 }
 
 + (NSString *)documentsPath;
 
 - (void)stringToFile:(NSString *)stringData withFileName:(NSString *)fileName;
+
+- (BOOL)isReady;
 
 @end

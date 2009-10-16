@@ -74,7 +74,9 @@
 			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
 			
 			//save off the xml data for this subscription to a file			
-			[fileUtil stringToFile:[subscription.accounts toXMLValue] withFileName:@"bucketview_last_search.xml"];			
+			if ([fileUtil isReady]) {
+				[fileUtil stringToFile:[subscription.accounts toXMLValue] withFileName:@"bucketview_last_search.xml"];			
+			}
 		}
 	}	
 }
