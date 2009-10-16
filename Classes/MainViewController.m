@@ -59,7 +59,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	if (![userInfo isNewUser]) {
 		[subscription release];
 	
-		NSString *formattedDateString = @"?????";
+		NSString *formattedDateString = nil;
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
 		if (subscription == nil) {
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not update from BucketWise.  Try refreshing later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -83,7 +83,9 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 			formattedDateString = [dateFormatter stringFromDate:date];		
 			[FileUtil stringToFile:formattedDateString withFileName:BUCKETVIEW_LAST_UPDATE];
 		}
-		lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+		if ([formattedDateString hasData]) {
+			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+		}
 	}	
 }
 
