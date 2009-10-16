@@ -17,7 +17,6 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
 	MainViewController *aController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
 	self.mainViewController = aController;
 	[aController release];

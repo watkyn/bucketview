@@ -21,6 +21,7 @@
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		EA24174D106D214B00DBAFF1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */; };
 		EA3FAE4F106D3FDC00EAD182 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA3FAE4E106D3FDC00EAD182 /* Entitlements.plist */; };
+		EA65A55E1088BDA600C93F08 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EA65A55D1088BDA600C93F08 /* FileUtil.m */; };
 		EA6CFC990FFE9BE500718304 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC4E0FFE9BE400718304 /* Connection.m */; };
 		EA6CFC9A0FFE9BE500718304 /* ConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC500FFE9BE500718304 /* ConnectionDelegate.m */; };
 		EA6CFC9B0FFE9BE500718304 /* NSHTTPURLResponse+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CFC520FFE9BE500718304 /* NSHTTPURLResponse+Error.m */; };
@@ -84,6 +85,8 @@
 		EA24174B106D214B00DBAFF1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Classes/SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Classes/SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		EA3FAE4E106D3FDC00EAD182 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		EA65A55C1088BDA600C93F08 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
+		EA65A55D1088BDA600C93F08 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
 		EA6CFC4D0FFE9BE400718304 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		EA6CFC4E0FFE9BE400718304 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		EA6CFC4F0FFE9BE400718304 /* ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionDelegate.h; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */,
 				EAA9D8B4106ACB7C0062605D /* NSString+Util.h */,
 				EAA9D8B5106ACB7C0062605D /* NSString+Util.m */,
+				EA65A55C1088BDA600C93F08 /* FileUtil.h */,
+				EA65A55D1088BDA600C93F08 /* FileUtil.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				EAA9D8B6106ACB7C0062605D /* NSString+Util.m in Sources */,
 				EA860A31106CF286003F47AE /* UserInfo.m in Sources */,
 				EA24174D106D214B00DBAFF1 /* SFHFKeychainUtils.m in Sources */,
+				EA65A55E1088BDA600C93F08 /* FileUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

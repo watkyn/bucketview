@@ -15,6 +15,8 @@
 #import "Bucket.h"
 #import "NSString+Util.h"
 #import "SFHFKeychainUtils.h"
+#import "FileUtil.h"
+#import "NSObject+XMLSerializableSupport.h"
 
 @implementation MainViewController
 
@@ -23,6 +25,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
+	fileUtil = [[FileUtil alloc] init];
 	userInfo = [[UserInfo alloc] init];
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	[self syncUserDefaults];
@@ -30,6 +33,7 @@
 }
 
 - (void)viewDidUnLoad {
+	[fileUtil release];
 	[userInfo release];
 	[subscription release];
 	[super viewDidUnload];
@@ -68,6 +72,9 @@
 			NSDate *date = [NSDate date];
 			NSString *formattedDateString = [dateFormatter stringFromDate:date];		
 			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+			
+			//save off the xml data for this subscription to a file			
+			[fileUtil stringToFile:[subscription.accounts toXMLValue] withFileName:@"bucketview_last_search.xml"];			
 		}
 	}	
 }
