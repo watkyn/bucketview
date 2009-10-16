@@ -58,18 +58,17 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 - (IBAction)refreshView {
 	if (![userInfo isNewUser]) {
 		[subscription release];
-		
-//		NSData *data = [FileUtil fileToData:bucketv];
-//		if (data != nil) {
-//			subscription = [[Subscription alloc] init];
-//			subscription.accounts = [Account allFromXMLData:data];
-//		}
-		
+	
+		NSString *formattedDateString = @"?????";
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
 		if (subscription == nil) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not get data from BucketWise." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not update from BucketWise.  Try refreshing later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
 			[alert release];
+			subscription = [[Subscription alloc] init];
+			subscription.subscriptionId = [FileUtil fileToString:BUCKETVIEW_SAVED_SUBSCRIPTION];
+			subscription.accounts = [Account allFromXMLData:[FileUtil fileToData:BUCKETVIEW_SAVED_ACCOUNTS]];
+			formattedDateString = [FileUtil fileToString:BUCKETVIEW_LAST_UPDATE];
 		} else {		
 			NSData *accountsXmlData = [Account findXmlForSubscriptionWithId:[subscription subscriptionId]];
 			[FileUtil stringToFile:[subscription subscriptionId] withFileName:BUCKETVIEW_SAVED_SUBSCRIPTION];
@@ -81,10 +80,10 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 			[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
 			NSDate *date = [NSDate date];
-			NSString *formattedDateString = [dateFormatter stringFromDate:date];		
+			formattedDateString = [dateFormatter stringFromDate:date];		
 			[FileUtil stringToFile:formattedDateString withFileName:BUCKETVIEW_LAST_UPDATE];
-			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
 		}
+		lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
 	}	
 }
 
