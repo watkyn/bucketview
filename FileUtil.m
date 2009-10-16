@@ -16,6 +16,32 @@
 	return [docPath stringByAppendingPathComponent:@"Documents"];
 }
 
++ (NSString *)fileToString:(NSString *)fileName {
+	NSMutableString *mutableString = [NSMutableString stringWithCapacity:0];
+	NSString *filePath = [FileUtil documentsPath];
+	NSInputStream *inputStream = [[NSInputStream alloc] initWithFileAtPath:[filePath stringByAppendingPathComponent:fileName]];
+	[inputStream open];
+	
+	NSInteger maxLength = 128; 
+	uint8_t readBuffer [maxLength]; 
+	BOOL endOfStreamReached = NO; 
+	while (! endOfStreamReached) { 
+		NSInteger bytesRead = [inputStream read:readBuffer maxLength:maxLength]; 
+		if (bytesRead == 0) { 
+			endOfStreamReached = YES; 
+		} else if (bytesRead == -1) { 
+			endOfStreamReached = YES; 
+		} else { 
+			NSString *readBufferString = [[NSString alloc] initWithBytesNoCopy:readBuffer length:bytesRead encoding:NSUTF8StringEncoding freeWhenDone:NO]; 
+			[mutableString appendString:readBufferString];
+			[readBufferString release]; 
+		} 
+	}
+	[inputStream close]; 
+	[inputStream release]; 
+	return mutableString;
+}
+
 - (id)init {
 	self = [super init];
 	ready = YES;
@@ -39,6 +65,7 @@
 	[asyncOutputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode]; 
 	[asyncOutputStream open]; 
 }
+
 
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent { 

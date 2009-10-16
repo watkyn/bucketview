@@ -18,6 +18,8 @@
 
 + (NSString *)documentsPath;
 
++ (NSString *)fileToString:(NSString *)fileName;
+
 - (void)stringToFile:(NSString *)stringData withFileName:(NSString *)fileName;
 
 - (BOOL)isReady;

@@ -56,6 +56,8 @@
 - (IBAction)refreshView {
 	if (![userInfo isNewUser]) {
 		[subscription release];
+			
+		NSLog([FileUtil fileToString:@"bucketview_last_search.xml"]);
 		
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];
 		if (subscription == nil) {
