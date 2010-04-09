@@ -11,6 +11,7 @@
 
 @interface FlipsideViewController : UIViewController {
 	id <FlipsideViewControllerDelegate> delegate;
+	IBOutlet UILabel *versionLabel;
 	IBOutlet UITextField *urlTextField;
 	IBOutlet UITextField *userNameTextField;
 	IBOutlet UITextField *passwordTextField;

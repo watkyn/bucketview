@@ -42,7 +42,6 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 }
 
 
-//the view has to be loaded before programmatically flipping to the info screen
 - (void)viewDidAppear:(BOOL)animated {
 	if (newUser) {
 		[self showInfo];
@@ -62,7 +61,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 		NSString *formattedDateString = nil;
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
 		if (subscription == nil) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error" message:@"Could not update from BucketWise.  Try refreshing later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Couldn't get info from BucketWise.  \nTry refreshing later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
 			[alert release];
 			subscription = [[Subscription alloc] init];

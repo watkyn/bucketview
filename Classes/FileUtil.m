@@ -26,7 +26,7 @@
 }
 
 + (NSString *)fileToString:(NSString *)fileName {
-	return [NSString stringWithContentsOfFile:[[self documentsPath] stringByAppendingPathComponent:fileName]];
+	return [NSString stringWithContentsOfFile:[[self documentsPath] stringByAppendingPathComponent:fileName] encoding:NSUTF8StringEncoding error:nil];
 }
 
 + (void)stringToFile:(NSString *)string withFileName:(NSString *)fileName {

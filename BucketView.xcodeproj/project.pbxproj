@@ -59,6 +59,7 @@
 		EAA9D8B3106ACB6E0062605D /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8B2106ACB6E0062605D /* Subscription.m */; };
 		EAA9D8B6106ACB7C0062605D /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9D8B5106ACB7C0062605D /* NSString+Util.m */; };
 		EAB68CC9106D1EAF0094DCCC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB68CC8106D1EAF0094DCCC /* Security.framework */; };
+		EAC67D52116FB1DF00A91371 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EAC67D51116FB1DF00A91371 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +169,7 @@
 		EAA9D8B4106ACB7C0062605D /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "Classes/NSString+Util.h"; sourceTree = "<group>"; };
 		EAA9D8B5106ACB7C0062605D /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "Classes/NSString+Util.m"; sourceTree = "<group>"; };
 		EAB68CC8106D1EAF0094DCCC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EAC67D51116FB1DF00A91371 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +257,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EAC67D51116FB1DF00A91371 /* Default.png */,
 				EA93FBD7106AB3470074E008 /* Icon.png */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
@@ -489,6 +492,7 @@
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				EA93FBD8106AB3470074E008 /* Icon.png in Resources */,
 				EA3FAE4F106D3FDC00EAD182 /* Entitlements.plist in Resources */,
+				EAC67D52116FB1DF00A91371 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,11 +623,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BucketView_Prefix.pch;
 				INFOPLIST_FILE = "BucketView-Info.plist";
 				PRODUCT_NAME = BucketView;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Distribution;
 		};

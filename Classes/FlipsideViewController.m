@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];    
 	
+	NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
+	versionLabel.text = [NSString stringWithFormat:@"Version: %@", [infoDictionary valueForKey:@"CFBundleVersion"]];
+	
 	urlTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"];
 	userNameTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
 	passwordTextField.text = [SFHFKeychainUtils getPasswordForUsername:userNameTextField.text andServiceName:@"BucketView" error:nil];
