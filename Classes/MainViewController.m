@@ -61,7 +61,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 		NSString *formattedDateString = nil;
 		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
 		if (subscription == nil) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Couldn't get info from BucketWise.  \nTry refreshing later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Get Data" message:@"The connection to the server failed.  Try refreshing." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[alert show];
 			[alert release];
 			subscription = [[Subscription alloc] init];
