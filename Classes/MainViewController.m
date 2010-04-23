@@ -17,6 +17,7 @@
 #import "SFHFKeychainUtils.h"
 #import "FileUtil.h"
 #import "NSObject+XMLSerializableSupport.h"
+#import "Connection.h"
 
 static NSString *BUCKETVIEW_SAVED_SUBSCRIPTION = @"bucketview_last_subscription_search.xml";
 static NSString *BUCKETVIEW_SAVED_ACCOUNTS = @"bucketview_last_account_search.xml";
@@ -96,6 +97,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	[ObjectiveResourceConfig setSite:userInfo.bucketWiseUrl];	 
 	[ObjectiveResourceConfig setUser:userInfo.bucketWiseUserName];
 	[ObjectiveResourceConfig setPassword:userInfo.bucketWisePassword];
+	[Connection setTimeout:10.0];
 }
 
 

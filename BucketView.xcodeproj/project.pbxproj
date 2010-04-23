@@ -230,9 +230,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EA7BECE61182190A006CA8A2 /* External */,
 				EA5B04151064330E009C8197 /* Util */,
 				EAA67AF10FFEB19500CBD5A2 /* Models */,
-				EA6CFC4C0FFE9BE400718304 /* objective_resource */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
@@ -423,6 +423,14 @@
 			path = XML;
 			sourceTree = "<group>";
 		};
+		EA7BECE61182190A006CA8A2 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CFC4C0FFE9BE400718304 /* objective_resource */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		EAA67AF10FFEB19500CBD5A2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,11 +578,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tony Eichelberger (WU99BRAGZW)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BucketView_Prefix.pch;
 				INFOPLIST_FILE = "BucketView-Info.plist";
 				PRODUCT_NAME = BucketView;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "67BEE9EE-0AC4-4B05-A7CB-90A9091989D2";
 			};
 			name = Release;
 		};
