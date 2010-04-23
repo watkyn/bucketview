@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSString *ownerId;
 @property (nonatomic, retain) NSArray *accounts;
 
+- (NSArray *)sortedAccounts;
+
 @end

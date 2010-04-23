@@ -124,7 +124,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"bucketCell"] autorelease];
 	}
 
-	Account *acct = [subscription.accounts objectAtIndex:indexPath.section];
+	Account *acct = [subscription.sortedAccounts objectAtIndex:indexPath.section];
 	NSString *bucketName = [[acct.buckets objectAtIndex:indexPath.row] name];
 	NSString *bucketBalance = [[acct.buckets objectAtIndex:indexPath.row] balance];	
 
@@ -163,7 +163,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	Account *account = [subscription.accounts objectAtIndex:section];
+	Account *account = [subscription.sortedAccounts objectAtIndex:section];
 	if (account.buckets.count == 1) {
 		return @"";
 	}
@@ -171,11 +171,11 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return subscription.accounts.count;
+	return subscription.sortedAccounts.count;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-	return [[[subscription.accounts objectAtIndex:section] buckets] count];
+	return [[[subscription.sortedAccounts objectAtIndex:section] buckets] count];
 }
 
 - (NSString *)cleanUpUrl:(NSString*)url {
