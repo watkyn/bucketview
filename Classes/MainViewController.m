@@ -141,6 +141,11 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	cell.textLabel.font = [UIFont systemFontOfSize:15.0];
 	cell.textLabel.text = bucketName;
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+	if ([[NSNumber numberWithInteger:0] compare:amount] == NSOrderedDescending) {
+		cell.detailTextLabel.textColor = [UIColor redColor];
+	} else {
+		cell.detailTextLabel.textColor = [UIColor blackColor];		
+	}
 	cell.detailTextLabel.text = formattedBalance;
  
 	return cell;
