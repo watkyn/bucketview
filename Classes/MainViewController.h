@@ -26,6 +26,10 @@
 
 - (void)syncUserDefaults;
 
-- (NSString *)cleanUpUrl:(NSString*)url;
+- (NSString *)cleanUpUrl:(NSString *)url;
+
+- (NSString *)formatMoney:(NSNumber *)amount;
+
+- (NSString *)formatBalance:(NSString *)amountString;
 
 @end

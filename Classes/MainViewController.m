@@ -127,32 +127,47 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	Account *acct = [subscription.accounts objectAtIndex:indexPath.section];
 	NSString *bucketName = [[acct.buckets objectAtIndex:indexPath.row] name];
 	NSString *bucketBalance = [[acct.buckets objectAtIndex:indexPath.row] balance];	
-	
-	// format balance for currency
-	NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
-	[currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
-	[currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
-	int intBalance = [bucketBalance intValue] / 100;
-	NSNumber *amount = [NSNumber numberWithInteger:intBalance];
-	
-	NSString* formattedBalance = [currencyStyle stringFromNumber:amount];
-	[currencyStyle release];
+
+	NSNumber *amount = [NSNumber numberWithInteger:[bucketBalance integerValue]];
 	
 	cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-	cell.textLabel.text = bucketName;
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+	
+	if (acct.buckets.count == 1) {
+		cell.textLabel.text = acct.name;		
+	} else {
+		cell.textLabel.text = bucketName;
+	}
 	if ([[NSNumber numberWithInteger:0] compare:amount] == NSOrderedDescending) {
 		cell.detailTextLabel.textColor = [UIColor redColor];
 	} else {
 		cell.detailTextLabel.textColor = [UIColor blackColor];		
 	}
-	cell.detailTextLabel.text = formattedBalance;
+	cell.detailTextLabel.text = [self formatBalance:bucketBalance];
  
 	return cell;
 }
 
+- (NSString *)formatBalance:(NSString *)amountString {
+	int intBalance = [amountString intValue] / 100;
+	return [self formatMoney:[NSNumber numberWithInteger:intBalance]];
+}
+
+- (NSString *)formatMoney:(NSNumber *)amount {
+	NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
+	[currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
+	
+	NSString *formattedAmount = [currencyStyle stringFromNumber:amount];
+	[currencyStyle release];
+	return formattedAmount;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [[subscription.accounts objectAtIndex:section] name];
+	Account *account = [subscription.accounts objectAtIndex:section];
+	if (account.buckets.count == 1) {
+		return @"";
+	}
+	return account.name;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
