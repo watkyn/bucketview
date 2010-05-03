@@ -151,8 +151,8 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 }
 
 - (NSString *)formatBalance:(NSString *)amountString {
-	int intBalance = [amountString intValue] / 100;
-	return [self formatMoney:[NSNumber numberWithInteger:intBalance]];
+	float balance = [amountString floatValue] / 100;
+	return [self formatMoney:[NSNumber numberWithFloat:balance]];
 }
 
 - (NSString *)formatMoney:(NSNumber *)amount {
