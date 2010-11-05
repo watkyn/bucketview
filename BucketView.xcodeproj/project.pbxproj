@@ -99,7 +99,6 @@
 		8D1107310486CEB800E47090 /* BucketView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BucketView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		EA1238671088FE0D003DF375 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtil.h; path = Classes/FileUtil.h; sourceTree = "<group>"; };
 		EA1238681088FE0D003DF375 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUtil.m; path = Classes/FileUtil.m; sourceTree = "<group>"; };
-		EA1EF7C21284B238005105EA /* StringUtilTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtilTestCase.h; sourceTree = "<group>"; };
 		EA1EF7C31284B238005105EA /* StringUtilTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtilTestCase.m; sourceTree = "<group>"; };
 		EA24174B106D214B00DBAFF1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Classes/SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		EA24174C106D214B00DBAFF1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Classes/SFHFKeychainUtils.m; sourceTree = "<group>"; };
@@ -178,7 +177,6 @@
 		EA93FBD7106AB3470074E008 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		EAA6482B1284AACE008BC098 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA6482C1284AACE008BC098 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		EAA6483A1284AB2B008BC098 /* UserInfoTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTestCase.h; sourceTree = "<group>"; };
 		EAA6483B1284AB2B008BC098 /* UserInfoTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTestCase.m; sourceTree = "<group>"; };
 		EAA9D8AB106ACB600062605D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = Classes/Account.h; sourceTree = "<group>"; };
 		EAA9D8AC106ACB600062605D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = Classes/Account.m; sourceTree = "<group>"; };
@@ -464,9 +462,7 @@
 		EAA648391284AB01008BC098 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EAA6483A1284AB2B008BC098 /* UserInfoTestCase.h */,
 				EAA6483B1284AB2B008BC098 /* UserInfoTestCase.m */,
-				EA1EF7C21284B238005105EA /* StringUtilTestCase.h */,
 				EA1EF7C31284B238005105EA /* StringUtilTestCase.m */,
 			);
 			name = Tests;

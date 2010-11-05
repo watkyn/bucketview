@@ -5,9 +5,14 @@
 //  Created by Tony Eichelberger on 11/5/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
+#import <SenTestingKit/SenTestingKit.h>
 
-#import "UserInfoTestCase.h"
 #import "UserInfo.h"
+
+@interface UserInfoTestCase : SenTestCase {
+}
+
+@end
 
 @implementation UserInfoTestCase
 

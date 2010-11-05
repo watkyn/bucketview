@@ -6,7 +6,14 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "StringUtilTestCase.h"
+#import <SenTestingKit/SenTestingKit.h>
+
+@interface StringUtilTestCase : SenTestCase {
+	
+}
+
+@end
+
 #import "NSString+Util.h"
 
 @implementation StringUtilTestCase
