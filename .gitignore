@@ -4,3 +4,6 @@ build/*
 *.perspectivev3
 *.tm_build_errors
 *db
+*xcuserdata*
+*.swp
+*xcworkspace*
