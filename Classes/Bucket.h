@@ -10,8 +10,6 @@
 
 
 @interface Bucket : NSObject {
-	NSString *name;
-	NSString *balance;
 }
 
 @property (nonatomic, retain) NSString *name;

@@ -10,9 +10,6 @@
 
 
 @interface Subscription : NSObject {
-	NSString *subscriptionId;
-	NSString *ownerId;
-	NSArray *accounts;
 }
 
 @property (nonatomic, retain) NSString *subscriptionId;

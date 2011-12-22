@@ -10,9 +10,6 @@
 
 
 @interface UserInfo : NSObject {
-	NSString *bucketWiseUrl;
-	NSString *bucketWiseUserName;
-	NSString *bucketWisePassword;
 }
 
 @property (nonatomic, retain) NSString *bucketWiseUrl;

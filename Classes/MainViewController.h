@@ -11,6 +11,7 @@
 @class FileUtil;
 @class Subscription;
 @class UserInfo;
+@class SplashScreenView;
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
 	Subscription *subscription;

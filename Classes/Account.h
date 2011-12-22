@@ -10,10 +10,6 @@
 
 
 @interface Account : NSObject {
-	NSString *accountId;
-	NSString *name;
-	NSString *balance;
-	NSArray *buckets;
 }
 
 + (NSData *)findXmlForSubscriptionWithId:(NSString *)subscriptionId;

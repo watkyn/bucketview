@@ -14,15 +14,8 @@
 @synthesize subscriptionId, ownerId, accounts;
 
 - (NSArray *)sortedAccounts {
-	NSSortDescriptor *sortByName = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+	NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
 	return [accounts sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortByName]];	
-}
-
-- (void)dealloc {
-	[accounts release];
-	[ownerId release];
-	[subscriptionId release];
-    [super dealloc];
 }
 
 @end

@@ -10,14 +10,13 @@
 
 
 @interface FlipsideViewController : UIViewController {
-	id <FlipsideViewControllerDelegate> delegate;
 	IBOutlet UILabel *versionLabel;
 	IBOutlet UITextField *urlTextField;
 	IBOutlet UITextField *userNameTextField;
 	IBOutlet UITextField *passwordTextField;
 }
 
-@property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
+@property (nonatomic, retain) id <FlipsideViewControllerDelegate> delegate;
 
 - (IBAction)done;
 

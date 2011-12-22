@@ -9,28 +9,24 @@
 #import "BucketViewAppDelegate.h"
 #import "MainViewController.h"
 
+
 @implementation BucketViewAppDelegate
 
 
 @synthesize window;
 @synthesize mainViewController;
+@synthesize splashScreen;
 
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	MainViewController *aController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
-	self.mainViewController = aController;
-	[aController release];
-	
-    mainViewController.view.frame = [UIScreen mainScreen].applicationFrame;
+- (void)applicationDidFinishLaunching:(UIApplication *)application {	
 	[window addSubview:[mainViewController view]];
+    
+    self.splashScreen.delegate = self;
+    self.splashScreen.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.mainViewController presentModalViewController:splashScreen animated:NO];
+    
     [window makeKeyAndVisible];
 }
 
 
-- (void)dealloc {
-    [mainViewController release];
-    [window release];
-    [super dealloc];
-}
 
 @end

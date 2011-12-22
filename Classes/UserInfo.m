@@ -17,11 +17,4 @@
 	return (![bucketWiseUrl hasData] || ![bucketWiseUserName hasData] || ![bucketWisePassword hasData]);
 }
 
-- (void)dealloc {
-	[bucketWiseUrl release];
-	[bucketWiseUserName release];
-	[bucketWisePassword release];
-	[super dealloc];
-}
-
 @end

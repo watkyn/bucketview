@@ -7,17 +7,12 @@
 //
 
 #import "MainViewController.h"
-#import "MainView.h"
-#import "ObjectiveResourceConfig.h"
 #import "UserInfo.h"
 #import "Account.h"
 #import "Subscription.h"	
 #import "Bucket.h"
 #import "NSString+Util.h"
-#import "SFHFKeychainUtils.h"
 #import "FileUtil.h"
-#import "NSObject+XMLSerializableSupport.h"
-#import "Connection.h"
 
 static NSString *BUCKETVIEW_SAVED_SUBSCRIPTION = @"bucketview_last_subscription_search.xml";
 static NSString *BUCKETVIEW_SAVED_ACCOUNTS = @"bucketview_last_account_search.xml";
@@ -37,8 +32,6 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 }
 
 - (void)viewDidUnLoad {
-	[userInfo release];
-	[subscription release];
 	[super viewDidUnload];
 }
 
@@ -56,48 +49,48 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 #pragma mark web services and data manipuplation
 
 - (IBAction)refreshView {
-	if (![userInfo isNewUser]) {
-		[subscription release];
-	
-		NSString *formattedDateString = nil;
-		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
-		if (subscription == nil) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Get Data" message:@"The connection to the server failed.  Try refreshing." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-			[alert show];
-			[alert release];
-			subscription = [[Subscription alloc] init];
-			subscription.subscriptionId = [FileUtil fileToString:BUCKETVIEW_SAVED_SUBSCRIPTION];
-			subscription.accounts = [Account allFromXMLData:[FileUtil fileToData:BUCKETVIEW_SAVED_ACCOUNTS]];
-			formattedDateString = [FileUtil fileToString:BUCKETVIEW_LAST_UPDATE];
-		} else {		
-			NSData *accountsXmlData = [Account findXmlForSubscriptionWithId:[subscription subscriptionId]];
-			[FileUtil stringToFile:[subscription subscriptionId] withFileName:BUCKETVIEW_SAVED_SUBSCRIPTION];
-			[FileUtil dataToFile:accountsXmlData withFileName:BUCKETVIEW_SAVED_ACCOUNTS];
-			subscription.accounts = [Account allFromXMLData:accountsXmlData];			
-			[acctTableView reloadData];
-			
-			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
-			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-			[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
-			NSDate *date = [NSDate date];
-			formattedDateString = [dateFormatter stringFromDate:date];		
-			[FileUtil stringToFile:formattedDateString withFileName:BUCKETVIEW_LAST_UPDATE];
-		}
-		if ([formattedDateString hasData]) {
-			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
-		}
-	}	
+//	if (![userInfo isNewUser]) {
+//		[subscription release];
+//	
+//		NSString *formattedDateString = nil;
+//		subscription = [[[Subscription findAllRemote] objectAtIndex:0] retain];		
+//		if (subscription == nil) {
+//			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Get Data" message:@"The connection to the server failed.  Try refreshing." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//			[alert show];
+//			[alert release];
+//			subscription = [[Subscription alloc] init];
+//			subscription.subscriptionId = [FileUtil fileToString:BUCKETVIEW_SAVED_SUBSCRIPTION];
+//			subscription.accounts = [Account allFromXMLData:[FileUtil fileToData:BUCKETVIEW_SAVED_ACCOUNTS]];
+//			formattedDateString = [FileUtil fileToString:BUCKETVIEW_LAST_UPDATE];
+//		} else {		
+//			NSData *accountsXmlData = [Account findXmlForSubscriptionWithId:[subscription subscriptionId]];
+//			[FileUtil stringToFile:[subscription subscriptionId] withFileName:BUCKETVIEW_SAVED_SUBSCRIPTION];
+//			[FileUtil dataToFile:accountsXmlData withFileName:BUCKETVIEW_SAVED_ACCOUNTS];
+//			subscription.accounts = [Account allFromXMLData:accountsXmlData];			
+//			[acctTableView reloadData];
+//			
+//			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+//			[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+//			[dateFormatter setTimeStyle:NSDateFormatterShortStyle];		
+//			NSDate *date = [NSDate date];
+//			formattedDateString = [dateFormatter stringFromDate:date];		
+//			[FileUtil stringToFile:formattedDateString withFileName:BUCKETVIEW_LAST_UPDATE];
+//		}
+//		if ([formattedDateString hasData]) {
+//			lastUpdatedLabel.text = [NSString stringWithFormat:@"Updated %@", formattedDateString];
+//		}
+//	}	
 }
 
 - (void)syncUserDefaults {
 	userInfo.bucketWiseUrl = [self cleanUpUrl:[[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUrl"]];
 	userInfo.bucketWiseUserName = [[NSUserDefaults standardUserDefaults] stringForKey:@"bucketWiseUserName"];
-	userInfo.bucketWisePassword = [SFHFKeychainUtils getPasswordForUsername:userInfo.bucketWiseUserName andServiceName:@"BucketView" error:nil];
+	//userInfo.bucketWisePassword = [SFHFKeychainUtils getPasswordForUsername:userInfo.bucketWiseUserName andServiceName:@"BucketView" error:nil];
 	
-	[ObjectiveResourceConfig setSite:userInfo.bucketWiseUrl];	 
-	[ObjectiveResourceConfig setUser:userInfo.bucketWiseUserName];
-	[ObjectiveResourceConfig setPassword:userInfo.bucketWisePassword];
-	[Connection setTimeout:10.0];
+//	[ObjectiveResourceConfig setSite:userInfo.bucketWiseUrl];	 
+//	[ObjectiveResourceConfig setUser:userInfo.bucketWiseUserName];
+//	[ObjectiveResourceConfig setPassword:userInfo.bucketWisePassword];
+//	[Connection setTimeout:10.0];
 }
 
 
@@ -114,8 +107,6 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentModalViewController:controller animated:YES];
-	
-	[controller release];
 }
 
 #pragma mark table view delegate and dataSource
@@ -123,7 +114,7 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bucketCell"];
 	if(nil == cell) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"bucketCell"] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"bucketCell"];
 	}
 
 	Account *acct = [subscription.sortedAccounts objectAtIndex:indexPath.section];
@@ -160,7 +151,6 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	[currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
 	
 	NSString *formattedAmount = [currencyStyle stringFromNumber:amount];
-	[currencyStyle release];
 	return formattedAmount;
 }
 
@@ -194,12 +184,6 @@ static NSString *BUCKETVIEW_LAST_UPDATE = @"bucketview_last_update.xml";
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 }
-
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 
 @end
