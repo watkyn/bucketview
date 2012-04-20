@@ -60,6 +60,7 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BucketView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketView_Prefix.pch; sourceTree = "<group>"; };
+		596C617714CE4DCC00D87E0E /* BucketView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BucketView.entitlements; sourceTree = "<group>"; };
 		5988420D14A17612002B79DA /* SplashScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenView.h; sourceTree = "<group>"; };
 		5988420E14A17612002B79DA /* SplashScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BucketView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BucketView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				596C617714CE4DCC00D87E0E /* BucketView.entitlements */,
 				EAA648391284AB01008BC098 /* Tests */,
 				EA7BECE61182190A006CA8A2 /* External */,
 				EA5B04151064330E009C8197 /* Util */,
@@ -400,6 +402,7 @@
 				GCC_PREFIX_HEADER = BucketView_Prefix.pch;
 				INFOPLIST_FILE = "BucketView-Info.plist";
 				PRODUCT_NAME = BucketView;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -414,6 +417,7 @@
 				INFOPLIST_FILE = "BucketView-Info.plist";
 				PRODUCT_NAME = BucketView;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "67BEE9EE-0AC4-4B05-A7CB-90A9091989D2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -472,7 +476,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tony Eichelberger";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -480,6 +483,7 @@
 				INFOPLIST_FILE = "BucketView-Info.plist";
 				PRODUCT_NAME = BucketView;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B7B81AD-8CFC-4204-909E-52C463433E51";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Distribution;
 		};
